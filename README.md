@@ -2,6 +2,10 @@
 
 Aplicación web que implementa autenticación y operaciones CRUD usando Firebase.
 
+## Repositorio
+
+[https://github.com/pauloccc1207/autorizacion](https://github.com/pauloccc1207/autorizacion)
+
 ## Funcionalidades
 
 - Autenticación de usuarios (email/password y Google)
@@ -26,4 +30,4 @@ Aplicación web que implementa autenticación y operaciones CRUD usando Firebase
 
 ## Autor
 
-[Tu nombre]
+[Paulo César Cruz Corral]
