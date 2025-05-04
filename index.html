@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi App con Firebase</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <!-- Asegúrate de que estos scripts se cargan antes que tu script.js -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-storage.js"></script>
+</head>
+<body>
+
+    <div id="auth-container">
+        <h1>Bienvenido</h1>
+
+        <div id="login-form">
+            <h2>Iniciar Sesión</h2>
+            <input type="email" id="login-email" placeholder="Correo electrónico" required>
+            <input type="password" id="login-password" placeholder="Contraseña" required>
+            <button id="login-button">Entrar</button>
+            <p id="login-error" class="error-message"></p>
+            <p>¿No tienes cuenta? <a href="#" id="show-signup">Regístrate aquí</a></p>
+        </div>
+
+        <div id="signup-form" style="display: none;">
+            <h2>Registrarse</h2>
+            <input type="email" id="signup-email" placeholder="Correo electrónico" required>
+            <input type="password" id="signup-password" placeholder="Contraseña (mínimo 6 caracteres)" required>
+            <button id="signup-button">Registrarme</button>
+            <p id="signup-error" class="error-message"></p>
+            <p>¿Ya tienes cuenta? <a href="#" id="show-login">Inicia sesión aquí</a></p>
+        </div>
+
+        <hr>
+        <button id="google-signin-button">Iniciar Sesión con Google</button>
+    </div>
+
+    <div id="app-container" style="display: none;">
+        <div id="sidebar">
+            <h2>Menú</h2>
+            <nav>
+                <ul>
+                    <li><a href="#" data-section="personal-data">Datos Personales</a></li>
+                    <li><a href="#" data-section="file-upload">Subir Archivos</a></li>
+                    <li><a href="#" data-section="realtime-data">Datos en Tiempo Real</a></li>
+                    <li><a href="#" data-section="company-info">Info Empresa</a></li>
+                </ul>
+            </nav>
+            <div class="user-info">
+                <p>Usuario: <span id="user-email"></span></p>
+                <button id="logout-button">Cerrar Sesión</button>
+            </div>
+        </div>
+
+        <div id="main-content">
+            <div id="personal-data-section" class="content-section">
+                <h2>Mis Datos Personales</h2>
+                <form id="personal-data-form">
+                    <label for="pd-nombre">Nombre:</label>
+                    <input type="text" id="pd-nombre" name="nombre">
+
+                    <label for="pd-direccion">Dirección:</label>
+                    <input type="text" id="pd-direccion" name="direccion">
+
+                    <label for="pd-telefono">Teléfono:</label>
+                    <input type="tel" id="pd-telefono" name="telefono">
+
+                    <button type="submit">Guardar Datos</button>
+                    <p id="pd-save-status" class="status-message"></p>
+                </form>
+            </div>
+
+            <div id="file-upload-section" class="content-section">
+                <h2>Mis Archivos</h2>
+                <input type="file" id="file-input">
+                <button id="upload-button">Subir Archivo</button>
+                <p id="upload-status" class="status-message"></p>
+                <h3>Archivos Subidos:</h3>
+                <ul id="file-list">
+                    </ul>
+            </div>
+
+            <div id="realtime-data-section" class="content-section">
+                <h2>Registro en Tiempo Real</h2>
+                <form id="realtime-data-form">
+                    <label for="rt-item">Elemento:</label>
+                    <input type="text" id="rt-item" name="item" required>
+
+                    <label for="rt-value">Valor:</label>
+                    <input type="text" id="rt-value" name="value" required>
+
+                    <button type="submit">Agregar Registro</button>
+                    <p id="rt-save-status" class="status-message"></p>
+                </form>
+                <h3>Registros Actuales:</h3>
+                <ul id="realtime-list">
+                    </ul>
+            </div>
+
+            <div id="company-info-section" class="content-section">
+                <h2>Información de la Empresa</h2>
+                <form id="company-info-form">
+                    <label for="ci-nombre">Nombre de la Empresa:</label>
+                    <input type="text" id="ci-nombre" name="nombre" required>
+
+                    <label for="ci-direccion">Dirección:</label>
+                    <input type="text" id="ci-direccion" name="direccion" required>
+
+                    <label for="ci-email">Correo Electrónico:</label>
+                    <input type="email" id="ci-email" name="email" required>
+
+                    <label for="ci-empleados">Número de Empleados:</label>
+                    <input type="number" id="ci-empleados" name="empleados" required>
+
+                    <label for="ci-facturacion">Facturación Anual:</label>
+                    <input type="number" id="ci-facturacion" name="facturacion" required>
+
+                    <button type="submit">Guardar Información</button>
+                    <p id="ci-save-status" class="status-message"></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

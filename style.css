@@ -1,0 +1,257 @@
+/* Estilos Generales y Minimalistas */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que el body ocupe al menos la altura de la pantalla */
+}
+
+#auth-container, #app-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#auth-container {
+    max-width: 400px;
+    text-align: center;
+}
+
+#app-container {
+    display: flex; /* Usado para sidebar y main content */
+    width: 90%;
+    max-width: 1200px;
+    min-height: 80vh; /* Altura mínima del contenedor de la app */
+    display: none; /* Inicialmente oculto por JS */
+}
+
+/* Formularios */
+input[type="email"],
+input[type="password"],
+input[type="text"],
+input[type="tel"] {
+    width: calc(100% - 20px); /* Ajuste para padding */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s ease;
+    margin-top: 10px; /* Espacio arriba del botón */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#google-signin-button {
+    background-color: #db4437;
+}
+#google-signin-button:hover {
+    background-color: #c23321;
+}
+
+#logout-button {
+    background-color: #6c757d;
+    font-size: 0.9em;
+    padding: 8px 15px;
+}
+#logout-button:hover {
+    background-color: #5a6268;
+}
+
+/* Mensajes de error y estado */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 10px;
+    min-height: 1.2em; /* Evita saltos de layout */
+}
+.status-message {
+    color: green;
+    font-size: 0.9em;
+    margin-top: 10px;
+     min-height: 1.2em;
+}
+
+/* Enlaces para cambiar entre login/signup */
+#login-form p, #signup-form p {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+#login-form a, #signup-form a {
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+#login-form a:hover, #signup-form a:hover {
+    text-decoration: underline;
+}
+
+hr {
+    margin: 20px 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+/* Estructura de la App Principal */
+#sidebar {
+    width: 200px;
+    background-color: #e9ecef;
+    padding: 20px;
+    border-right: 1px solid #ccc;
+    display: flex;
+    flex-direction: column; /* Organiza elementos verticalmente */
+    justify-content: space-between; /* Empuja user-info al fondo */
+}
+
+#sidebar h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+#sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#sidebar nav li a {
+    display: block;
+    padding: 10px 0;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+#sidebar nav li a:hover,
+#sidebar nav li a.active { /* Estilo para sección activa */
+    background-color: #dcdcdc;
+    font-weight: bold;
+}
+
+.user-info {
+    margin-top: auto; /* Empuja al fondo */
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+    font-size: 0.9em;
+}
+.user-info span {
+    font-weight: bold;
+    word-break: break-all; /* Evita que emails largos rompan el layout */
+}
+
+#main-content {
+    flex-grow: 1; /* Ocupa el espacio restante */
+    padding: 20px;
+    overflow-y: auto; /* Permite scroll si el contenido es largo */
+}
+
+/* Secciones de Contenido */
+.content-section {
+    display: none; /* Ocultas por defecto, JS las muestra */
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 20px; /* Espacio entre secciones si se mostraran varias */
+}
+.content-section h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Listas (archivos, datos en tiempo real) */
+#file-list, #realtime-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 15px;
+}
+#file-list li, #realtime-list li {
+    background-color: #fff;
+    border: 1px solid #eee;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#file-list a { /* Enlace para descargar archivo */
+    color: #007bff;
+    text-decoration: none;
+}
+#file-list a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos específicos para formularios dentro de secciones */
+#personal-data-form label,
+#realtime-data-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#personal-data-form input,
+#realtime-data-form input {
+    width: calc(100% - 22px); /* Ajuste por padding y borde */
+}
+
+/* Input de archivo */
+#file-input {
+    display: block;
+    margin-bottom: 15px;
+}
+
+/* Agregar al final del archivo */
+#company-info-section {
+    padding: 20px;
+}
+
+#company-info-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#company-info-form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#company-info-form button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#company-info-form button:hover {
+    background-color: #45a049;
+}
